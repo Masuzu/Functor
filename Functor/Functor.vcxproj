@@ -79,6 +79,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Functor.h" />
+    <ClInclude Include="FunctorSlot.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
