@@ -28,5 +28,8 @@ int main()
 	test2(3.14, 'c');
 
 	Functor<int> test3(&A::foo2, &a);
-	test3(nullptr, nullptr);	// Will not work with non pointer arguments
+	test3(nullptr, nullptr);	// Will work only for functions with pointer arguments
+
+	MyFunctor<int (A::*)(double, char)> test4(&A::foo, a);
+	test4(3.14, 'c');
 }

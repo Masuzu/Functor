@@ -296,4 +296,45 @@ private:
 	std::shared_ptr<FunctorSlotBase<R>> d_functor_impl;
 };
 
+template<typename T>	class MyFunctor;
+
+template<typename Class, typename RC, typename A0>
+class MyFunctor <RC(Class::*)(A0)>
+{
+	typedef RC(Class::*MemberFunction)(A0);
+
+public:
+	MyFunctor(RC(Class::*fn)(A0), Class &object) : fn_(fn), object_(&object)	{}
+	RC operator()(A0 a0)	const{ return (object_->*fn_)(a0); }
+private:
+	MemberFunction fn_;
+	Class *object_;
+};
+
+template<typename Class, typename RC, typename A0, typename A1>
+class MyFunctor <RC(Class::*)(A0, A1)>
+{
+	typedef RC(Class::*MemberFunction)(A0, A1);
+
+public:
+	MyFunctor(RC(Class::*fn)(A0, A1), Class &object) : fn_(fn), object_(&object)	{}
+	RC operator()(A0 a0, A1 a1)	const{ return (object_->*fn_)(a0, a1); }
+private:
+	MemberFunction fn_;
+	Class *object_;
+};
+
+template<typename Class, typename RC, typename A0, typename A1, typename A2>
+class MyFunctor <RC(Class::*)(A0, A1, A2)>
+{
+	typedef RC(Class::*MemberFunction)(A0, A1, A2);
+
+public:
+	MyFunctor(RC(Class::*fn)(A0, A1, A2), Class &object) : fn_(fn), object_(&object)	{}
+	RC operator()(A0 a0, A1 a1, A2 a2)	const{ return (object_->*fn_)(a0, a1, a2); }
+private:
+	MemberFunction fn_;
+	Class *object_;
+};
+
 #endif
