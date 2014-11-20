@@ -18,7 +18,7 @@
     <ClInclude Include="Functor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FunctorSlot.h">
+    <ClInclude Include="SmartFunctor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
